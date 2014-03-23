@@ -1,0 +1,7 @@
+.DS_Store
+/.idea
+/node_modules
+/public
+/lib
+/bower_components
+unknown_msgs.txt
