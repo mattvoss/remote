@@ -91,8 +91,10 @@ if ("ssl" in config) {
 =============================================================== */
 
 app.post('/api/action', routes.actions);
+app.post('/api/power', routes.power);
 //app.get('/api/tune/:channel', routes.tuneChannel);
 app.get('/api/onkyo/discover', routes.discover);
+app.get("*", routes.index);
 
 /*  ==============================================================
     Launch the server

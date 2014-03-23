@@ -5,8 +5,7 @@
 $font-family = Slackey
 $header-background-color = #90425c
 $masthead-background-color = #3a859f
-$background-color = #86988b
-
+$background-color = hsl(200,5%,15%)
 $body-color = #fff
 $text-color = #000
 $hover-color = #f4f0c3
@@ -16,7 +15,11 @@ $box-shadow = #4b4d45
 body
   padding-top: 72px
   color: $body-color
+  background-size: 5px 5px
   background-color: $background-color
+  background-image:   -webkit-linear-gradient( 45deg, hsla(0,0%,0%,0) 0px,
+                                                      hsla(0,0%,0%,.10) 50%,
+                                                      hsla(0,0%,0%,0) 100% )
 
 header
   font-family: $font-family

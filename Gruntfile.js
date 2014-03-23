@@ -78,7 +78,7 @@ module.exports = function(grunt) {
             'lib/font-awesome/css/font-awesome.css',
             'lib/selectize/selectize.css',
             'lib/ladda-bootstrap/ladda-themeless.css',
-            'assets/css/custom.css'
+            'app/assets/css/custom.css'
           ]
         }
       }
@@ -96,7 +96,7 @@ module.exports = function(grunt) {
           'lib/font-awesome/css/font-awesome.css',
           'lib/selectize/selectize.css',
           'lib/ladda-bootstrap/ladda-themeless.css',
-          'assets/css/custom.css'
+          'app/assets/css/custom.css'
         ],
         dest: 'public/css/app.css',
       },

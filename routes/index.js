@@ -1,4 +1,8 @@
-var shef = require('shef'),
+var fs = require('fs'),
+    path = require('path'),
+    handlebars = require('handlebars'),
+    Swag = require('swag'),
+    shef = require('shef'),
     box1 = shef.box({host:'directv-hr20-1.mattandmeg.int'}),
     Onkyo = require("onkyo"),
     onkyo = Onkyo.init(),
@@ -49,6 +53,19 @@ xbmcApi.on('connection:close', function(data) {
   initXbmc();
 });
 
+exports.index = function(req, res) {
+  fs.readFile(__dirname + '/../public/index.html', 'utf8', function(error, content) {
+    if (error) { console.log(error); }
+    //var prefix = (opts.configs.get("prefix")) ? opts.configs.get("prefix") : "";
+    var pageBuilder = handlebars.compile(content),
+        html = pageBuilder({});
+
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write(html, 'utf-8');
+    res.end('\n');
+  });
+};
+
 
 exports.actions = function(req, res) {
   console.log(req.body);
@@ -76,10 +93,21 @@ exports.discover = function(req, res) {
 
 exports.power = function(req, res) {
   var profile = req.body.profile,
-      value  = req.body.value,
+      value = req.body.value,
       sendBack = function(data) {
         sendJSON(res,data);
       };
+  if (value == "off") {
+    lirc_node.irsend.send_once("vizio", "PowerOff", function() {});
+    onkyo.PwrOff(function(error, data){
+      sendBack({"power": false, "response": data, "success": true});
+    });
+  } else {
+    lirc_node.irsend.send_once("vizio", "PowerOn", function() {});
+    onkyo.PwrOn(function(error, data){
+      sendBack({"power": true, "response": data, "success": true});
+    });
+  }
 };
 
 var sendJSON = function(res, data) {

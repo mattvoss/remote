@@ -17,6 +17,8 @@
     "test": "brunch test"
   },
   "dependencies": {
+    "handlebars": "latest",
+    "swag": "latest",
     "javascript-brunch": "1.7.x",
     "css-brunch": "1.7.x",
     "stylus-brunch": "1.7.x",
