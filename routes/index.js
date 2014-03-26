@@ -54,7 +54,7 @@ xbmcApi.on('connection:close', function(data) {
 });
 
 exports.index = function(req, res) {
-  fs.readFile(__dirname + '/../public/index.html', 'utf8', function(error, content) {
+  fs.readFile(__dirname + '/../app/index.html', 'utf8', function(error, content) {
     if (error) { console.log(error); }
     //var prefix = (opts.configs.get("prefix")) ? opts.configs.get("prefix") : "";
     var pageBuilder = handlebars.compile(content),
