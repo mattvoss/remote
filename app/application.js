@@ -1,27 +1,17 @@
-/* jshint node: true */
-"use strict";
+var Remote = new Backbone.Marionette.Application(),
+    App = Remote;
 
-var Backbone = require("backbone"),
-    Router = require("router"),
-    Controller = require("controller"),
-    Swag = require("swag");
-
-var app = new Backbone.Marionette.Application();
-
-app.addRegions({
-    body: "body"
+Remote.addRegions({
+    body: "#body"
 });
 
-app.addInitializer(function () {
-    Swag.registerHelpers();
+Remote.addInitializer(function () {
+  this.remote = new this.Models.Remote();
+  this.remote.fetch();
+  Swag.registerHelpers();
 });
 
-app.addInitializer(function () {
-    new Router({controller: new Controller({region: this.body})});
+Remote.on("start", function () {
+  Backbone.history.start({pushState: true});
+  Backbone.history.navigate("display", { trigger: true });
 });
-
-app.on("start", function () {
-    Backbone.history.start();
-});
-
-module.exports = app;

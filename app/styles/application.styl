@@ -12,6 +12,16 @@ $hover-color = #f4f0c3
 $text-shadow = #5f6359
 $box-shadow = #4b4d45
 
+@font-face
+  font-family "FontAwesome"
+  src url("fonts/fontawesome-webfont.eot")
+  src url("fonts/fontawesome-webfont.eot?#iefix") format('eot'),
+      url("fonts/fontawesome-webfont.woff") format('woff'),
+       url("fonts/fontawesome-webfont.ttf") format('truetype'),
+       url("fonts/fontawesome-webfont.svg#FontAwesome") format('svg')
+  font-weight normal
+  font-style normal
+
 body
   padding-top: 72px
   color: $body-color
@@ -157,3 +167,328 @@ footer
   a:hover
     color: $body-color
     text-decoration: none
+
+.power
+  font-family "FontAwesome"
+  text-shadow 0px 1px 1px rgba(250,250,250,0.1)
+  font-size 32pt
+  display block
+  position relative
+  text-decoration none
+  box-shadow 0px 3px 0px 0px rgb(34,34,34),
+     0px 7px 10px 0px rgb(17,17,17),
+          inset 0px 1px 1px 0px rgba(250, 250, 250, .2),
+          inset 0px -12px 35px 0px rgba(0, 0, 0, .5)
+  width 70px
+  height 70px
+  border 0
+  color rgb(37,37,37)
+  border-radius 35px
+  text-align center
+  line-height 79px
+  background-color rgb(83,87,93)
+  transition color 350ms ease, text-shadow 350ms
+  -o-transition color 350ms ease, text-shadow 350ms
+  -moz-transition color 350ms ease, text-shadow 350ms
+  -webkit-transition color 350ms ease, text-shadow 350ms
+  a
+    color black
+    text-decoration none
+    &:before
+      content ""
+      width 80px
+      height 80px
+      display block
+      z-index -2
+      position absolute
+      background-color rgb(26,27,29)
+      left -5px
+      top -2px
+      border-radius 40px
+      box-shadow 0px 1px 0px 0px rgba(250,250,250,0.1),
+    inset 0px 1px 2px rgba(0, 0, 0, 0.5)
+
+    &:active
+      box-shadow 0px 0px 0px 0px rgb(34,34,34),
+     0px 3px 7px 0px rgb(17,17,17),
+          inset 0px 1px 1px 0px rgba(250, 250, 250, .2),
+          inset 0px -10px 35px 5px rgba(0, 0, 0, .5)
+      background-color rgb(83,87,93)
+      top 3px
+    &.on
+      top 3px
+      color #fff
+      text-shadow 0px 0px 3px rgb(250,250,250)
+      & + span
+        box-shadow inset 0px 1px 0px 0px rgba(250,250,250,0.5),
+ 0px 0px 3px 2px rgba(135,187,83,0.5)
+        background-color rgb(135,187,83)
+    & + span
+      display block
+      width 8px
+      height 8px
+      background-color rgb(226,0,0)
+      box-shadow inset 0px 1px 0px 0px rgba(250,250,250,0.5),
+ 0px 0px 3px 2px rgba(226,0,0,0.5)
+      border-radius 4px
+      clear both
+      position absolute
+      bottom 0
+      left 42%
+      transition background-color 350ms, box-shadow 700ms
+      -o-transition background-color 350ms, box-shadow 700ms
+      -moz-transition background-color 350ms, box-shadow 700ms
+      -webkit-transition background-color 350ms, box-shadow 700ms
+
+.power a:active, a:focus, a:hover
+  outline 0
+  text-decoration none
+
+.power a:active:before, a.on:before
+  top -5px
+  background-color rgb(26,27,29)
+  box-shadow 0px 1px 0px 0px rgba(250,250,250,0.1),
+    inset 0px 1px 2px rgba(0, 0, 0, 0.5)
+
+button
+  &.main
+    margin 0px 10px
+    position relative
+    &.depth
+      background #444
+      border none
+      border-radius 80px
+      box-shadow inset 0 0 2px 2px hsla(0,0%,0%,.2),
+                inset 0 0 2px 4px hsla(0,0%,0%,.2),
+                inset 0 0 2px 6px hsla(0,0%,0%,.2),
+                inset 0 0 1px 8px hsla(0,0%,0%,.5),
+                inset 0 -4px 2px 4px hsla(0,0%,0%,.5),
+                inset 0 1px 1px 8px hsla(0,0%,100%,.25),
+                inset 0 -30px 30px hsla(0,0%,0%,.2),
+                0 -4px 8px 4px hsla(0,0%,0%,.5),
+                0 10px 10px hsla(0,0%,0%,.25),
+                0 0 2px 2px hsla(0,0%,0%,.2),
+                0 0 2px 4px hsla(0,0%,0%,.2),
+                0 0 2px 6px hsla(0,0%,0%,.2),
+                0 0 2px 8px hsla(0,0%,0%,.5),
+                0 1px 2px 8px hsla(0,0%,100%,.25),
+                0 -1px 2px 8px hsla(0,0%,0%,.5)
+      color #303030
+      cursor pointer
+      font bold 40px/85px sans-serif
+      height 80px
+      padding 0
+      text-shadow 0 1px 1px hsla(0,0%,100%,.25),
+                 0 -1px 1px hsla(0,0%,0%,.75)
+      width 80px
+      &:active
+        box-shadow inset 0 0 2px 2px hsla(0,0%,0%,.2),
+                inset 0 0 2px 4px hsla(0,0%,0%,.2),
+                inset 0 0 2px 6px hsla(0,0%,0%,.2),
+                inset 0 0 1px 7px hsla(0,0%,0%,.5),
+                inset 0 5px 15px 7px hsla(0,0%,0%,.15),
+                inset 0 -4px 2px 3px hsla(0,0%,0%,.5),
+                inset 0 1px 1px 7px hsla(0,0%,100%,.25),
+                inset 0 -30px 30px hsla(0,0%,0%,.1),
+                inset 0 30px 30px hsla(0,0%,0%,.2),
+                0 -4px 8px 4px hsla(0,0%,0%,.5),
+                0 5px 10px hsla(0,0%,0%,.25),
+                0 0 2px 2px hsla(0,0%,0%,.2),
+                0 0 2px 4px hsla(0,0%,0%,.2),
+                0 0 2px 6px hsla(0,0%,0%,.2),
+                0 0 2px 8px hsla(0,0%,0%,.5),
+                0 1px 2px 8px hsla(0,0%,100%,.25),
+                0 -1px 2px 8px hsla(0,0%,0%,.5)
+        line-height 86px
+
+button.main:hover,
+button.main:active
+  outline 0
+
+button.main.depth:hover,
+button.main.depth:focus
+  color #0ab
+  text-shadow 0 0 20px hsla(240,75%,75%,.5),
+                 0 1px 1px hsla(0,0%,100%,.25),
+                 0 -1px 1px hsla(0,0%,0%,.75)
+
+.macrosContainer
+  list-style none
+  margin-left 0
+  font-size 0.65em
+  &:after
+    content ""
+    display table
+    clear both
+
+.macros:before,
+.macros:after,
+.macros .button:after,
+.macros .button.active:before,
+.macros .button.active:after,
+.macros .button:first-child:before,
+.macros .button:last-child:before
+  content ''
+  display block
+  position absolute
+
+.Nav_Small
+  font-size 0.65em
+
+.Nav_Large
+  font-size 1.4em
+
+.macros
+  -moz-border-radius 0.4375em
+  -webkit-border-radius 0.4375em
+  border-radius 0.4375em
+  -moz-box-shadow #4d4d4d 0 -1px 0px 0px inset, rgba(255, 255, 255, 0.0857) 0 -5px 0px 0px inset, #1e1e1e 0 4px 0px 0px inset
+  -webkit-box-shadow #4d4d4d 0 -1px 0px 0px inset, rgba(255, 255, 255, 0.0857) 0 -5px 0px 0px inset, #1e1e1e 0 4px 0px 0px inset
+  box-shadow #4d4d4d 0 -1px 0px 0px inset, rgba(255, 255, 255, 0.0857) 0 -5px 0px 0px inset, #1e1e1e 0 4px 0px 0px inset
+  background #242424
+  border-top 1px solid rgba(0, 0, 0, 0.1)
+  border-bottom 1px solid rgba(255, 255, 255, 0.1)
+  display inline-block
+  text-align center
+  padding 0.375em 0.3125em
+  position relative
+  &:before
+    -moz-border-radius-bottomleft 0.4375em
+    -webkit-border-bottom-left-radius 0.4375em
+    border-bottom-left-radius 0.4375em
+    background rgba(36, 36, 36, 0.4)
+    width 0.4375em
+    height 0.4375em
+    bottom 0
+    left 0
+  &:after
+    -moz-border-radius-bottomright 0.4375em
+    -webkit-border-bottom-right-radius 0.4375em
+    border-bottom-right-radius 0.4375em
+    background rgba(36, 36, 36, 0.4)
+    width 0.4375em
+    height 0.4375em
+    bottom 0
+    right 0
+  .button
+    -moz-border-radius 0.3125em
+    -webkit-border-radius 0.3125em
+    border-radius 0.3125em
+    -moz-box-shadow rgba(255, 255, 255, 0.15) 0 1px 0px 0px inset, rgba(255, 255, 255, 0.05) 0 1px 0px 1px inset, rgba(0, 0, 0, 0.7) 0 1px 2px 0px, rgba(9, 9, 9, 0.6) 0 2px 3px 2px
+    -webkit-box-shadow rgba(255, 255, 255, 0.15) 0 1px 0px 0px inset, rgba(255, 255, 255, 0.05) 0 1px 0px 1px inset, rgba(0, 0, 0, 0.7) 0 1px 2px 0px, rgba(9, 9, 9, 0.6) 0 2px 3px 2px
+    box-shadow rgba(255, 255, 255, 0.15) 0 1px 0px 0px inset, rgba(255, 255, 255, 0.05) 0 1px 0px 1px inset, rgba(0, 0, 0, 0.7) 0 1px 2px 0px, rgba(9, 9, 9, 0.6) 0 2px 3px 2px
+    background-color #343434
+    background-image -moz-linear-gradient(top, rgba(78, 78, 78, 0.15) 0%, rgba(65, 65, 65, 0.15) 2%, rgba(59, 59, 59, 0.15) 5%, rgba(56, 56, 56, 0.15) 32%, rgba(54, 54, 54, 0.15) 33%, rgba(53, 53, 53, 0.15) 46%, rgba(51, 51, 51, 0.15) 47%, rgba(50, 50, 50, 0.15) 60%, rgba(48, 48, 48, 0.15) 61%, rgba(42, 42, 42, 0.15) 100%)
+    background-image -webkit-linear-gradient(top, rgba(78, 78, 78, 0.15) 0%, rgba(65, 65, 65, 0.15) 2%, rgba(59, 59, 59, 0.15) 5%, rgba(56, 56, 56, 0.15) 32%, rgba(54, 54, 54, 0.15) 33%, rgba(53, 53, 53, 0.15) 46%, rgba(51, 51, 51, 0.15) 47%, rgba(50, 50, 50, 0.15) 60%, rgba(48, 48, 48, 0.15) 61%, rgba(42, 42, 42, 0.15) 100%)
+    background-image linear-gradient(to bottom, rgba(78, 78, 78, 0.15) 0%, rgba(65, 65, 65, 0.15) 2%, rgba(59, 59, 59, 0.15) 5%, rgba(56, 56, 56, 0.15) 32%, rgba(54, 54, 54, 0.15) 33%, rgba(53, 53, 53, 0.15) 46%, rgba(51, 51, 51, 0.15) 47%, rgba(50, 50, 50, 0.15) 60%, rgba(48, 48, 48, 0.15) 61%, rgba(42, 42, 42, 0.15) 100%)
+    background-size 4px 4px
+    float left
+    margin-right 0.125em
+    padding 0.375em 0.4375em
+    position relative
+    a
+      -moz-border-radius 0.45833em
+      -webkit-border-radius 0.45833em
+      border-radius 0.45833em
+      text-shadow black 0 -1px 0
+      background rgba(182, 182, 182, 0.018)
+      color rgba(255, 255, 255, 0.85)
+      display block
+      font-family 'Fresca', sans-serif
+      font-size 1.5em
+      padding 0.5em 2.5em 0.5em
+      text-decoration none
+    &:hover
+      -moz-box-shadow rgba(255, 255, 255, 0.05) 0 1px 0px 0px inset, rgba(255, 255, 255, 0.02) 0 1px 0px 1px inset, rgba(9, 9, 9, 0.5) 0 2px 2px 1px
+      -webkit-box-shadow rgba(255, 255, 255, 0.05) 0 1px 0px 0px inset, rgba(255, 255, 255, 0.02) 0 1px 0px 1px inset, rgba(9, 9, 9, 0.5) 0 2px 2px 1px
+      box-shadow rgba(255, 255, 255, 0.05) 0 1px 0px 0px inset, rgba(255, 255, 255, 0.02) 0 1px 0px 1px inset, rgba(9, 9, 9, 0.5) 0 2px 2px 1px
+      a
+        opacity 0.8
+    &:after
+      background-image -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.11) 69%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 0) 100%)
+      background-image -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.11) 69%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 0) 100%)
+      background-image linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.11) 69%, rgba(255, 255, 255, 0) 80%, rgba(255, 255, 255, 0) 100%)
+      width 100%
+      height 1px
+      left 0
+      top 0
+    &.active
+      -moz-box-shadow rgba(0, 0, 0, 0.4) 0 0 0 1px inset
+      -webkit-box-shadow rgba(0, 0, 0, 0.4) 0 0 0 1px inset
+      box-shadow rgba(0, 0, 0, 0.4) 0 0 0 1px inset
+      background-color #2d2d2d
+      background-image linear-gradient(rgba(0, 0, 0, 0) 50%, #2e2e2e 50%)
+      background-size 2px 2px
+      a
+        text-shadow rgba(255, 255, 255, 0.4) 0 0 35px, rgba(76, 190, 255, 0.95) 0 0 25px
+        background none
+        color #4cbeff
+      &:before
+        background-image -moz-radial-gradient(center, ellipse cover, rgba(41, 137, 216, 0.51) 0%, rgba(30, 87, 153, 0.01) 53%, rgba(30, 87, 153, 0) 54%, rgba(30, 87, 153, 0) 57%)
+        background-image -webkit-radial-gradient(center, ellipse cover, rgba(41, 137, 216, 0.51) 0%, rgba(30, 87, 153, 0.01) 53%, rgba(30, 87, 153, 0) 54%, rgba(30, 87, 153, 0) 57%)
+        background-image radial-gradient(center, ellipse cover, rgba(41, 137, 216, 0.51) 0%, rgba(30, 87, 153, 0.01) 53%, rgba(30, 87, 153, 0) 54%, rgba(30, 87, 153, 0) 57%)
+        -moz-box-shadow rgba(76, 190, 255, 0.02) 0 0 0px 3px inset
+        -webkit-box-shadow rgba(76, 190, 255, 0.02) 0 0 0px 3px inset
+        box-shadow rgba(76, 190, 255, 0.02) 0 0 0px 3px inset
+        top -0.25em
+        left 10%
+        width 80%
+        height 0.375em
+      &:after
+        background-image -moz-radial-gradient(center, ellipse cover, rgba(41, 137, 216, 0.51) 0%, rgba(30, 87, 153, 0.01) 53%, rgba(30, 87, 153, 0) 54%, rgba(30, 87, 153, 0) 57%)
+        background-image -webkit-radial-gradient(center, ellipse cover, rgba(41, 137, 216, 0.51) 0%, rgba(30, 87, 153, 0.01) 53%, rgba(30, 87, 153, 0) 54%, rgba(30, 87, 153, 0) 57%)
+        background-image radial-gradient(center, ellipse cover, rgba(41, 137, 216, 0.51) 0%, rgba(30, 87, 153, 0.01) 53%, rgba(30, 87, 153, 0) 54%, rgba(30, 87, 153, 0) 57%)
+        -moz-box-shadow rgba(255, 255, 255, 0.05) 0 -5px 0px 0px inset
+        -webkit-box-shadow rgba(255, 255, 255, 0.05) 0 -5px 0px 0px inset
+        box-shadow rgba(255, 255, 255, 0.05) 0 -5px 0px 0px inset
+        top inherit
+        bottom -0.5em
+        left 0
+        width 100%
+        height 0.5em
+      &:hover
+        -moz-box-shadow rgba(0, 0, 0, 0.4) 0 0 0 1px inset
+        -webkit-box-shadow rgba(0, 0, 0, 0.4) 0 0 0 1px inset
+        box-shadow rgba(0, 0, 0, 0.4) 0 0 0 1px inset
+    &:first-child
+      &:before
+        -moz-box-shadow rgba(80, 136, 137, 0.5) -1px 0px 0px 0px
+        -webkit-box-shadow rgba(80, 136, 137, 0.5) -1px 0px 0px 0px
+        box-shadow rgba(80, 136, 137, 0.5) -1px 0px 0px
+        background-image -moz-linear-gradient(top, rgba(76, 190, 255, 0) 0%, rgba(76, 190, 255, 0.7) 50%, rgba(76, 190, 255, 0.69) 51%, rgba(76, 190, 255, 0) 100%)
+        background-image -webkit-linear-gradient(top, rgba(76, 190, 255, 0) 0%, rgba(76, 190, 255, 0.7) 50%, rgba(76, 190, 255, 0.69) 51%, rgba(76, 190, 255, 0) 100%)
+        background-image linear-gradient(to bottom, rgba(76, 190, 255, 0) 0%, rgba(76, 190, 255, 0.7) 50%, rgba(76, 190, 255, 0.69) 51%, rgba(76, 190, 255, 0) 100%)
+        width 1px
+        height 90%
+        right 0
+        top 5%
+    &:last-child
+      &:after
+        -moz-box-shadow rgba(80, 136, 137, 0.5) 1px 0px 0px 0px
+        -webkit-box-shadow rgba(80, 136, 137, 0.5) 1px 0px 0px 0px
+        box-shadow rgba(80, 136, 137, 0.5) 1px 0px 0px 0px
+        background-image -moz-linear-gradient(top, rgba(76, 190, 255, 0) 0%, rgba(76, 190, 255, 0.7) 50%, rgba(76, 190, 255, 0.69) 51%, rgba(76, 190, 255, 0) 100%)
+        background-image -webkit-linear-gradient(top, rgba(76, 190, 255, 0) 0%, rgba(76, 190, 255, 0.7) 50%, rgba(76, 190, 255, 0.69) 51%, rgba(76, 190, 255, 0) 100%)
+        background-image linear-gradient(to bottom, rgba(76, 190, 255, 0) 0%, rgba(76, 190, 255, 0.7) 50%, rgba(76, 190, 255, 0.69) 51%, rgba(76, 190, 255, 0) 100%)
+        width 1px
+        height 90%
+        left 0
+        top 5%
+
+
+
+.block-macros
+  width 100%
+  text-align center
+
+.block-main
+  width 75%
+  height 20px
+
+.block-volume
+  margin-left 15%
+  width 10%
+
+.block-power
+  margin-left 90% !important
+  width 10%

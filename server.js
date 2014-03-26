@@ -58,6 +58,9 @@ app.configure(function(){
     app.use('/images', express.static(__dirname + '/public/images', { maxAge: oneDay }));
     app.use('/img', express.static(__dirname + '/public/images', { maxAge: oneDay }));
     app.use('/fonts', express.static(__dirname + '/public/fonts', { maxAge: oneDay }));
+    app.use('/app', express.static(__dirname + '/app', { maxAge: oneDay }));
+    app.use('/lib', express.static(__dirname + '/lib', { maxAge: oneDay }));
+    app.use('/bower_components', express.static(__dirname + '/bower_components', { maxAge: oneDay }));
     app.use(app.router);
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
@@ -90,8 +93,10 @@ if ("ssl" in config) {
     Routes
 =============================================================== */
 
-app.post('/api/action', routes.actions);
-app.post('/api/power', routes.power);
+app.get('/api/remote', routes.config);
+app.post('/api/remote/action', routes.actions);
+app.post('/api/remote/power', routes.power);
+app.post('/api/remote/macros', routes.macros);
 //app.get('/api/tune/:channel', routes.tuneChannel);
 app.get('/api/onkyo/discover', routes.discover);
 app.get("*", routes.index);

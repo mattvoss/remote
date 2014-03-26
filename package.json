@@ -51,7 +51,8 @@
     "grunt-express-server": "latest",
     "grunt-node-inspector": "latest",
     "grunt-json": "latest",
-    "grunt-contrib-stylus": "~0.13.2"
+    "grunt-contrib-stylus": "~0.13.2",
+    "grunt-browserify": "latest"
   },
   "main": "index.js",
   "directories": {

@@ -66,6 +66,11 @@ exports.index = function(req, res) {
   });
 };
 
+exports.config = function(req, res) {
+  var data = {"history":[]};
+  sendJSON(res, data);
+};
+
 
 exports.actions = function(req, res) {
   console.log(req.body);
@@ -92,22 +97,54 @@ exports.discover = function(req, res) {
 };
 
 exports.power = function(req, res) {
-  var profile = req.body.profile,
+  console.log("power request");
+  var onkyoResponse = false,
+      profile = req.body.profile,
       value = req.body.value,
       sendBack = function(data) {
+        //console.log(data);
         sendJSON(res,data);
       };
   if (value == "off") {
-    lirc_node.irsend.send_once("vizio", "PowerOff", function() {});
+    lirc_node.irsend.send_once("vizio", "PowerOff", function() {
+      console.log("lirc vizio powered off");
+    });
     onkyo.PwrOff(function(error, data){
-      sendBack({"power": false, "response": data, "success": true});
+      if (!onkyoResponse) {
+        onkyoResponse = true;
+        console.log(data);
+        sendBack({"power": false, "response": data, "success": true});
+      }
     });
   } else {
-    lirc_node.irsend.send_once("vizio", "PowerOn", function() {});
+    lirc_node.irsend.send_once("vizio", "PowerOn", function() {
+      console.log("lirc vizio powered on");
+    });
     onkyo.PwrOn(function(error, data){
-      sendBack({"power": true, "response": data, "success": true});
+      if (!onkyoResponse) {
+        onkyoResponse = true;
+        console.log(data);
+        sendBack({"power": true, "response": data, "success": true});
+      }
     });
   }
+};
+
+exports.macros = function(req, res) {
+  console.log(req.body);
+  var source,
+      sendBack = function(data) {
+        //console.log(data);
+        sendJSON(res,data);
+      };
+  if (req.body.profile == "sat") {
+    source = "VIDEO2";
+  } else if (req.body.profile == "xbmc") {
+    source = "PC";
+  } else if (req.body.profile == "wii") {
+    source = "GAME";
+  }
+  actionOnkyo("SetSource", source, sendBack);
 };
 
 var sendJSON = function(res, data) {
@@ -132,7 +169,9 @@ var actionDirectv = function(action, value, callback) {
 };
 
 var actionOnkyo = function(action, value, callback) {
+  console.log("onkyo:", action, value, typeof onkyo[action]);
   if (typeof onkyo[action] == "function") {
+    console.log("function confirmed");
     if (value !== '') {
       onkyo[action](value, function(err, response) {
         if(!err) console.log(action, value);
