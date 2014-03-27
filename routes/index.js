@@ -169,30 +169,36 @@ var actionDirectv = function(action, value, callback) {
 };
 
 var actionOnkyo = function(action, value, callback) {
-  console.log("onkyo:", action, value, typeof onkyo[action]);
+  var onkyoResponse = false;
   if (typeof onkyo[action] == "function") {
     console.log("function confirmed");
     if (value !== '') {
       onkyo[action](value, function(err, response) {
         if(!err) console.log(action, value);
-        var data = {
-              "action": action,
-              "value": value,
-              "response": response,
-              "success": true
-            };
-        callback(data);
+        if (!onkyoResponse) {
+          onkyoResponse = true;
+          var data = {
+                "action": action,
+                "value": value,
+                "response": response,
+                "success": true
+              };
+          callback(data);
+        }
       });
     } else {
       onkyo[action](function(err, response) {
         if(!err) console.log(action, value);
-        var data = {
-              "action": action,
-              "value": value,
-              "response": response,
-              "success": true
-            };
-        callback(data);
+        if (!onkyoResponse) {
+          onkyoResponse = true;
+          var data = {
+                "action": action,
+                "value": value,
+                "response": response,
+                "success": true
+              };
+          callback(data);
+        }
       });
     }
   }

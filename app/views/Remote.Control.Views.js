@@ -95,9 +95,9 @@ Remote.module('Control.Views', function(Views, App, Backbone, Marionette, $, _) 
 
   Views.PowerButtonView = Marionette.ItemView.extend({
       template: Templates.powerButton,
-      className: "block block-power",
+      className: "block",
       events: {
-        "click #btnPower"    : "power"
+        "click .power"    : "power"
       },
       initialize: function(){
         this.powerStat = false;
@@ -119,7 +119,7 @@ Remote.module('Control.Views', function(Views, App, Backbone, Marionette, $, _) 
 
   Views.MacroButtonsView = Marionette.ItemView.extend({
       template: Templates.macros,
-      className: "block block-macros",
+      className: "block",
       events: {
         "click .button"    : "switchMacro"
       },
@@ -134,8 +134,28 @@ Remote.module('Control.Views', function(Views, App, Backbone, Marionette, $, _) 
       switchMacro: function(e) {
         $(".button", this.$el).removeClass('active');
         $(e.target.parentNode).addClass("active");
-        var profile = $(e.target).attr("data-macro");
+        var profile = $(e.target).attr("data-macro"),
             macro = Remote.remote.get("history").create({type: "macros", action: "", profile: profile, value: ""});
+      }
+  });
+
+  Views.NumberButtonsView = Marionette.ItemView.extend({
+      template: Templates.numberButtons,
+      className: "block numbers",
+      events: {
+        "click button"    : "clickButton"
+      },
+      initialize: function(){
+        //this.muteStat = false;
+      },
+
+      onRender: function() {
+
+      },
+
+      clickButton: function(e) {
+        var value = $(e.target).attr("data-button"),
+            button = Remote.remote.get("history").create({type: "action", action: "directv.keypress", value: value});
       }
   });
 
@@ -143,7 +163,7 @@ Remote.module('Control.Views', function(Views, App, Backbone, Marionette, $, _) 
       template: Templates.muteButton,
       className: "block block-mute",
       events: {
-        "click #btnMute"    : "mute"
+        "click .power"    : "mute"
       },
       initialize: function(){
         this.muteStat = false;
@@ -155,7 +175,7 @@ Remote.module('Control.Views', function(Views, App, Backbone, Marionette, $, _) 
 
       mute: function(e) {
         $("#btnMute", this.$el).toggleClass('on');
-        var action = (this.muteStat) ? "onkyo.UnMute" : "onkyo.Mute";
+        var action = (this.muteStat) ? "onkyo.UnMute" : "onkyo.Mute",
             mute = Remote.remote.get("history").create({type: "action", action: action, value: ""});
         //mute.save();
         this.muteStat = (this.muteStat) ? false : true;

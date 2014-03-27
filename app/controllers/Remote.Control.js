@@ -30,10 +30,12 @@ Remote.module('Control', function(Control, App, Backbone, Marionette, $, _) {
       App.body.show(this.appBody);
       var powerButton = new Remote.Control.Views.PowerButtonView({model: App.remote}),
           macroButtons = new Remote.Control.Views.MacroButtonsView({model: App.remote}),
-          muteButton = new Remote.Control.Views.MuteButtonView({model: App.remote});
+          muteButton = new Remote.Control.Views.MuteButtonView({model: App.remote}),
+          numberButtons = new Remote.Control.Views.NumberButtonsView({model: App.remote});
       this.appBody.power.show(powerButton);
       this.appBody.macros.show(macroButtons);
       this.appBody.volume.show(muteButton);
+      this.appBody.main.show(numberButtons);
     }
 
   });
